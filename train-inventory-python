@@ -1,0 +1,75 @@
+"""
+Authors: Diya Khanna 
+"""
+
+def printInventory (train):
+    """Displays the inventory in a train split across multiple lines of output."""
+    for traincar in train:
+        print ('Car #',train.index(traincar))
+        for item in traincar:
+           print ('  ',item[1],'kg', item[0])
+           
+def totalWeightOf (train,itemname):
+    """Counts the total weight of items with that name anywhere on the train."""
+    weight=0
+    for traincar in train:
+        for item in traincar:
+            if item[0]==itemname:
+               weight+=item[1]
+    return weight
+                
+def listItems (train,itemname):
+    """Returns a list containing each item with that name from throughout the train."""
+    counter=[]
+    for traincar in train:
+        for item in traincar:
+            if item[0]==itemname:
+                counter.append(item)
+    return counter
+
+def listWeights (train):
+    """Returns a list containing the total weight of each car in the train."""
+    counter=[]
+    total=0
+    for traincar in train:
+        for item in traincar:
+            total+=item[1]
+        counter.append(total)
+        total=0
+    return counter
+       
+def heaviestCar(train):
+    """Returns the index within that train of the heaviest single car, or the index of the earliest heaviest car if several are tied for heaviest."""
+    counter=[]
+    total=0
+    for traincar in train:
+        for item in traincar:
+            total+=item[1]   
+        counter.append(total)    
+        total=0
+    return counter.index(max(counter))
+
+def itemWeight(nameweighttuple):
+    """When given an item (a tuple containing a name and a weight), the function returns the weight of that item (the second part of the tuple)."""
+    return nameweighttuple[1]
+        
+def inventoryByWeight(train):
+    """When given a train, the function returns a list containing all of the items on the train, sorted by their weights."""
+    counter=[]
+    for traincar in train:
+        for item in traincar:
+            counter.append(item)
+    return sorted(counter, key=itemWeight)
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
